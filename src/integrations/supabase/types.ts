@@ -14,7 +14,89 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      channels: {
+        Row: {
+          created_at: string
+          id: string
+          input: string
+          name: string | null
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          input: string
+          name?: string | null
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          input?: string
+          name?: string | null
+        }
+        Relationships: []
+      }
+      videos: {
+        Row: {
+          analysis: string | null
+          channel_id: string
+          clean_transcript: string | null
+          created_at: string
+          error: string | null
+          id: string
+          ideas: string | null
+          lang: string | null
+          published_at: string | null
+          raw_transcript: string | null
+          status: string
+          summary: string | null
+          title: string | null
+          updated_at: string
+          video_id: string
+        }
+        Insert: {
+          analysis?: string | null
+          channel_id: string
+          clean_transcript?: string | null
+          created_at?: string
+          error?: string | null
+          id?: string
+          ideas?: string | null
+          lang?: string | null
+          published_at?: string | null
+          raw_transcript?: string | null
+          status?: string
+          summary?: string | null
+          title?: string | null
+          updated_at?: string
+          video_id: string
+        }
+        Update: {
+          analysis?: string | null
+          channel_id?: string
+          clean_transcript?: string | null
+          created_at?: string
+          error?: string | null
+          id?: string
+          ideas?: string | null
+          lang?: string | null
+          published_at?: string | null
+          raw_transcript?: string | null
+          status?: string
+          summary?: string | null
+          title?: string | null
+          updated_at?: string
+          video_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "videos_channel_id_fkey"
+            columns: ["channel_id"]
+            isOneToOne: false
+            referencedRelation: "channels"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
     }
     Views: {
       [_ in never]: never
