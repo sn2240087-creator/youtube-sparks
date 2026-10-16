@@ -48,7 +48,13 @@ export async function getVideoInfo(videoId: string): Promise<{ title?: string; u
 }
 
 export async function getTranscript(videoId: string): Promise<{ content: string; lang?: string }> {
-  const j = await call("/youtube/transcript", { videoId, text: "true" });
+  let j = await call("/transcript", { url: `https://www.youtube.com/watch?v=${videoId}`, text: "true" });
+  for (let i = 0; j.jobId && i < 30; i++) {
+    await new Promise((r) => setTimeout(r, 2000));
+    const r = await call(`/transcript/${j.jobId}`, {});
+    if (r.status === "failed") throw new Error(r.error?.message ?? "Transkript alınamadı.");
+    if (r.status === "completed" || r.content) j = r;
+  }
   const content =
     typeof j.content === "string"
       ? j.content
