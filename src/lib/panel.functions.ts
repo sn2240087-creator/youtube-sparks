@@ -1,7 +1,7 @@
 import { createServerFn } from "@tanstack/react-start";
 
 export const addChannel = createServerFn({ method: "POST" })
-  .inputValidator((d: { input: string }) => {
+  .validator((d: { input: string }) => {
     const input = String(d.input ?? "").trim();
     if (!input || input.length > 300) throw new Error("Geçerli bir kanal girin.");
     return { input };
@@ -17,7 +17,7 @@ export const addChannel = createServerFn({ method: "POST" })
   });
 
 export const checkChannel = createServerFn({ method: "POST" })
-  .inputValidator((d: { channelId: string; limit?: number }) => ({
+  .validator((d: { channelId: string; limit?: number }) => ({
     channelId: String(d.channelId),
     limit: Math.min(Math.max(Number(d.limit ?? 3), 1), 10),
   }))
@@ -62,7 +62,7 @@ Bilgi kesim tarihini aşan konularda emin olmadığını açıkça belirt, uydur
 };
 
 export const processStep = createServerFn({ method: "POST" })
-  .inputValidator((d: { id: string; step: Step }) => {
+  .validator((d: { id: string; step: Step }) => {
     const steps: Step[] = ["transcript", "clean", "summary", "analysis", "ideas"];
     if (!steps.includes(d.step)) throw new Error("Geçersiz adım");
     return { id: String(d.id), step: d.step };
