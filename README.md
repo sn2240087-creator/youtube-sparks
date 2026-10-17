@@ -1,14 +1,18 @@
-# Welcome to your Lovable project
+# Youtube Sparks
+
+Bana bir panel yapmanı istiyorum; bu panelde vermiş olduğum YouTube kanallarındaki en son yayınlanan videoların transkriptlerini alacak, gereksiz yerlerini silip kaydedecek. Sonra özetini ayrı kaydecek. Daha sonra burda anlatılan bilgileri analiz edip, bilgiler doğru mu, eksik mi, güncel mi, bunları değerlendirip rapor verecek. Ve bunlarla ilgili bana yeni fikirler veya projeler önerecek.
 
 This project was built with [Lovable](https://lovable.dev).
 
+**Live app**: https://youtube-sparks.lovable.app
+
 ## Build with Lovable
 
-Open your project in the [Lovable editor](https://lovable.dev) and keep building.
+Continue developing this project in the [Lovable editor](https://lovable.dev/projects/7c5e83a4-0801-4f74-96b6-b8ee898793df).
 
 - **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: connect the project to GitHub and every change made in Lovable is committed straight to your repository.
-- **Full ownership**: this code is yours. Push to your repository and your changes sync back into Lovable, ready for your next prompt.
+- **Stay in sync**: every change made in Lovable is committed straight to this repository.
+- **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
 
 ## Development
 
@@ -20,10 +24,3 @@ cd <repository-name>
 npm i
 npm run dev
 ```
-
-## Built with
-
-- TanStack Start
-- TypeScript
-- React
-- Tailwind CSS
